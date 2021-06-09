@@ -1,0 +1,32 @@
+{
+  "schema": {
+    "https://${NEXT_PUBLIC_MAGENTO_STORE_DOMAIN}/api/2021-01/graphql.json": {
+      "headers": {
+        "X-Magento-Storefront-Access-Token": "${NEXT_PUBLIC_MAGENTO_STOREFRONT_ACCESS_TOKEN}"
+      }
+    }
+  },
+  "documents": [
+    {
+      "./framework/magento/**/*.{ts,tsx}": {
+        "noRequire": true
+      }
+    }
+  ],
+  "generates": {
+    "./framework/magento/schema.d.ts": {
+      "plugins": ["typescript", "typescript-operations"],
+      "config": {
+        "scalars": {
+          "ID": "string"
+        }
+      }
+    },
+    "./framework/magento/schema.graphql": {
+      "plugins": ["schema-ast"]
+    }
+  },
+  "hooks": {
+    "afterAllFileWrite": ["prettier --write"]
+  }
+}
