@@ -9,6 +9,7 @@ const isBC = provider === 'bigcommerce'
 const isShopify = provider === 'shopify'
 const isSwell = provider === 'swell'
 const isVendure = provider === 'vendure'
+const isMagento = provider === 'magento'
 
 module.exports = withCommerceConfig({
   commerce,
